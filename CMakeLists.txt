@@ -148,6 +148,7 @@ find_path(LIBEVENT_INCLUDE_DIR event2/event.h REQUIRED)
 # OpenBSD requires the libevent package (not the preinstalled version)
 if (${CMAKE_SYSTEM_NAME} STREQUAL "OpenBSD")
    set(LIBEVENT_INCLUDE_DIR   "/usr/local/include")
+   set(LIBEVENT_LIBRARY       "/usr/local/lib/libevent_core.so.1.1")
 endif()
 
 if (NOT EVHTP_DISABLE_REGEX)
@@ -249,6 +250,7 @@ set(LIBEVHTP_EXTERNAL_LIBS
 		${OPENSSL_LIBRARIES}
 		${ONIG_LIBS}
 )
+message(STATUS "External Libs: ${LIBEVHTP_EXTERNAL_LIBS}")
 
 if (NOT ${LIBEVENT_PTHREADS_FOUND})
 	set(EVHTP_DISABLE_EVTHR ON)
